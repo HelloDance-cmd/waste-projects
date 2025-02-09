@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <!-- 全局属性定义，可用于Appender或Logger -->
+    <Properties>
+        <Property name="logBaseDir">../logs</Property>
+        <Property name="logPattern">[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%t] %-5p %c{1} - %m%n</Property>
+    </Properties>
+
+    <!-- Appenders定义 -->
+    <Appenders>
+        <!-- 控制台Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${logPattern}"/>
+        </Console>
+
+        <!-- 文件Appender，用于记录所有日志 -->
+        <File name="AllFile" fileName="${logBaseDir}/all.log">
+            <PatternLayout pattern="${logPattern}"/>
+        </File>
+
+        <!-- 滚动文件Appender，按日期和文件大小滚动 -->
+        <RollingFile name="RollingFile" fileName="${logBaseDir}/rolling.log"
+                     filePattern="${logBaseDir}/$${date:yyyy-MM}/rolling-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${logPattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+    </Appenders>
+
+    <!-- Loggers定义 -->
+    <Loggers>
+        <!-- 根Logger -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="AllFile"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+
+        <!-- 为特定包或类设置特定Logger -->
+        <Logger name="com.example" level="DEBUG" additivity="false">
+            <AppenderRef ref="RollingFile"/>
+        </Logger>
+
+        <!-- 异步Logger示例，提高性能 -->
+        <AsyncLogger name="com.example.async" level="INFO" includeLocation="true" additivity="false">
+            <AppenderRef ref="Console"/>
+        </AsyncLogger>
+    </Loggers>
+</Configuration>

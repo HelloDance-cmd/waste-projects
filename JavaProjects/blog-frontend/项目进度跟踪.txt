@@ -1,0 +1,42 @@
+前端（Vue+Axios）
+  1) 登录界面           ×
+    - 界面             √
+    - 功能             ×
+  2) 注册界面           ×
+    - 界面             √
+    - 功能             ×
+  3) 个人中心           ×
+    - 发布文章
+      - 草稿箱
+    - 个人简介
+    - 修改个人信息
+    - 注销个人账号
+  4) 文章显示           √
+
+后端（Java+JWT+MyBatis）
+  User
+    用户登录                              /user/login                     POST  v
+    获取关于此账号的信息                    /user/info                      POST  v
+    注册一个账号以Post方式                 /user/register                   GET   v  
+    提交一个用户评论                      /user/postcomment/{id}           POST  v
+
+    发布一篇文章                          /article/publish                 POST  v
+
+    
+    通过文章id获取文章信息                  /article/info/{id}               GET   v
+    通过文章id获取文章的评论内容列表          /comment/article/{id}              GET  v
+    通过用户id发布评论                      /comment/post                   GET  v
+
+数据库
+  user_info
+    user_id
+    user_name
+    user_password
+    user_email
+    user_avatar
+    
+  article
+    article_id
+    article_content
+    article_publish_date
+    article_author

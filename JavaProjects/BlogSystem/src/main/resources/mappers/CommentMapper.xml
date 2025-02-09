@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bricks.blogsystem.mapper.CommentMapper">
+
+    <!-- 插入评论信息 -->
+    <insert id="insertComment" keyProperty="id" useGeneratedKeys="true">
+        insert into comments (article_id, user_id, comment_content, comment_time, parent_comment_id)
+        values (#{articleId}, #{userId}, #{commentContent}, #{commentTime}, #{parentCommentId})
+    </insert>
+
+    <!-- 根据文章ID查询评论列表 -->
+    <select id="selectCommentsByArticleId" resultMap="commentResultMap">
+        select *
+        from comments
+        where article_id = #{articleId}
+    </select>
+
+    <!-- 评论结果映射 -->
+    <resultMap id="commentResultMap" type="com.bricks.blogsystem.entities.Comment">
+        <id property="id" column="id"/>
+        <result property="articleId" column="article_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="commentContent" column="comment_content"/>
+        <result property="commentTime" column="comment_time"/>
+        <result property="parentCommentId" column="parent_comment_id"/>
+    </resultMap>
+
+</mapper>

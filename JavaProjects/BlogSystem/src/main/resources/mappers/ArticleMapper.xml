@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bricks.blogsystem.mapper.ArticleMapper">
+
+    <!-- 插入文章信息 -->
+    <insert id="insertArticle" keyProperty="id" useGeneratedKeys="true">
+        insert into articles (title, content, author_id, create_time, update_time, category_id, views)
+        values (#{title}, #{content}, #{authorId}, #{createTime}, #{updateTime}, #{categoryId}, #{views})
+    </insert>
+
+    <!-- 根据分类ID查询文章列表 -->
+    <select id="selectArticlesByCategoryId" resultMap="articleResultMap">
+        select *
+        from articles
+        where category_id = #{categoryId}
+    </select>
+
+    <!-- 查询所有文章列表 -->
+    <select id="selectAllArticles" resultMap="articleResultMap">
+        select *
+        from articles
+        order by create_time desc
+    </select>
+
+    <!-- 根据文章ID查询文章详情 -->
+    <select id="selectArticleById" resultMap="articleResultMap">
+        select *
+        from articles
+        where id = #{articleId}
+    </select>
+
+    <!-- 更新文章浏览量 -->
+    <update id="updateArticleViews">
+        update articles
+        set views = views + 1
+        where id = #{articleId}
+    </update>
+
+    <!-- 文章结果映射 -->
+    <resultMap id="articleResultMap" type="com.bricks.blogsystem.entities.Article">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="authorId" column="author_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="categoryId" column="category_id"/>
+        <result property="views" column="views"/>
+    </resultMap>
+
+</mapper>

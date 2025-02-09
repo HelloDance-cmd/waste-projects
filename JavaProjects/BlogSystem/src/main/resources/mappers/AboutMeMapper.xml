@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bricks.blogsystem.mapper.AboutMeMapper">
+    <select id="getMe" resultMap="AboutMe">
+        SELECT * FROM about_me
+    </select>
+    
+    <resultMap id="AboutMe" type="com.bricks.blogsystem.entities.AboutMe">
+        <id property="id" column="id" />
+        <result property="full_name" column="full_name" />
+        <result property="nick_name" column="nick_name" />
+        <result property="profile_picture_url" column="profile_picture_url" />
+        <result property="short_bio" column="short_bio" />
+        <result property="detailed_bio" column="detailed_bio" />
+        <result property="birth_date" column="birth_date" />
+        <result property="hometown" column="hometown" />
+        <result property="current_location" column="current_location" />
+        <result property="occupation" column="occupation" />
+        <result property="hobbies" column="hobbies" />
+        <result property="contact_email" column="contact_email" />
+        <result property="personal_website_url" column="personal_website_url" />
+        <result property="social_media_links" column="social_media_links" />
+        <result property="skills" column="skills" />
+        <result property="education" column="education" />
+        <result property="awards_and_achievements" column="awards_and_achievements" />
+        <result property="created_at" column="created_at" />
+        <result property="updated_at" column="updated_at" />
+    </resultMap>
+</mapper>

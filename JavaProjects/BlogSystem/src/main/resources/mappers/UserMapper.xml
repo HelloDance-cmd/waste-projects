@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bricks.blogsystem.mapper.UserMapper">
+
+    <!-- 插入用户信息 -->
+    <insert id="insertUser" keyProperty="id" useGeneratedKeys="true">
+        insert into users (username, password, email, create_time, update_time)
+        values (#{username}, #{password}, #{email}, #{createTime}, #{updateTime})
+    </insert>
+
+    <!-- 根据用户名查询用户 -->
+    <select id="selectUserByUsername" resultMap="userResultMap">
+        select * from users where username = #{username}
+    </select>
+
+    <!-- 根据用户ID查询用户 -->
+    <select id="selectUserById" resultMap="userResultMap">
+        select * from users where id = #{id}
+    </select>
+
+    <!-- 用户结果映射 -->
+    <resultMap id="userResultMap" type="com.bricks.blogsystem.entities.User">
+        <id property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="password" column="password" />
+        <result property="email" column="email" />
+        <result property="createTime" column="create_time" />
+        <result property="updateTime" column="update_time" />
+    </resultMap>
+
+</mapper>
