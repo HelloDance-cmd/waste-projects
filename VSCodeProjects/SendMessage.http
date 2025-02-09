@@ -1,0 +1,8 @@
+HEAD https://dummyjson.com/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "emilys",
+    "password": "emilyspass",
+    "expiresInMins": 30
+}

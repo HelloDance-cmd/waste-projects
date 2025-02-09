@@ -1,0 +1,24 @@
+{
+  "files.associations": {
+    "typeinfo": "cpp",
+    "*.tcc": "cpp",
+    "chrono": "cpp",
+    "ratio": "cpp",
+    "system_error": "cpp",
+    "array": "cpp",
+    "functional": "cpp",
+    "regex": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "utility": "cpp"
+  },
+  // "editor.fontFamily": "JetBrains Mono, 'HarmonyOS Sans SC'",
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "editor.indentSize": 2,
+  // "editor.fontSize": 15,
+  "editor.tabSize": 2,
+  "code-runner.runInTerminal": false,
+  "code-runner.clearPreviousOutput": true,
+  "disable-hardware-acceleration": true,
+}

@@ -1,0 +1,9 @@
+body {
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 140px;
+    user-select: none;
+}

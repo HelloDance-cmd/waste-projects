@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moveable Ball</title>
+    <style>
+      body {
+        padding: 30px;
+      }
+      /* Setting the element of panel is `fiexed` */
+      .panel {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .ball {
+        width: 30px;
+        height: 30px;
+        background-color: dodgerblue;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panel">
+      <h2>Your Distance: <span class="distance" id="distance"></span></h2>
+    </div>
+    <div class="ball"></div>
+  </body>
+  <script>
+    class Ball {
+      constructor(ball, panel) {
+        this.ball = ball;
+        this.width = ball.offsetWidth;
+        this.height = ball.offsetHeight;
+        this.x = ball.offsetLeft;
+        this.y = ball.offsetTop;
+        this.panel = panel;
+      }
+
+      moveUp(distance) {
+        this.y -= distance;
+        this.ball.style.top = `${this.y}px`;
+        this.panel.innerText = this.y + 'cm'; // Update the distance
+      }
+
+      moveDown(distance) {
+        this.y += distance;
+        this.ball.style.top = `${this.y}px`;
+        this.panel.innerText = this.y + 'cm'; // Update the distance
+      }
+
+      moveLeft(distance) {
+        this.x -= distance;
+        this.ball.style.left = `${this.x}px`;
+      }
+
+      moveRight(distance) {
+        this.x += distance;
+        this.ball.style.left = `${this.x}px`;
+      }
+
+      move(x, y) {
+        let changed = y != this.y;
+        this.x = x;
+        this.y = y;
+        this.ball.style.left = `${this.x}px`;
+        this.ball.style.top = `${this.y}px`
+
+        if (changed) {
+          this.panel.innerText = this.y + 'cm'; // Update the distance
+        }
+
+      }
+    }
+
+    const ball = new Ball(document.querySelector(".ball"), document.querySelector(".panel span"));
+    document.addEventListener("keydown", (event) => {
+      const DISTANCE = 10;
+      switch (event.key) {
+        case "ArrowUp":
+          ball.moveUp(DISTANCE);
+          break;
+        case "ArrowDown":
+          ball.moveDown(DISTANCE);
+          break;
+        case "ArrowLeft":
+          ball.moveLeft(DISTANCE);
+          break;
+        case "ArrowRight":
+          ball.moveRight(DISTANCE);
+          break;
+      };
+    });
+  </script>
+</html>
+  </script>
+</html>

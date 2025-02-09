@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "Build GCC with I_DON'T KNOW VERSION",
+			"command": "c:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin\\g++.exe",
+			"args": [
+				// "-fdiagnostics-color=always",
+				"-g",
+				"-std=c++11",
+				"${file}",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"&&",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+			],
+			"options": {
+				"cwd": "c:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build",
+			"detail": "compiler: c:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin\\g++.exe"
+		}
+	]
+}

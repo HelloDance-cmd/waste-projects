@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div > p {
+            margin: 2rem 0;
+            /* margin-block-start: 0; */
+            margin-trim: in-flow;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+    <script>
+        function printNode(node) {
+            if(node == null)
+                return
+
+            console.log(node.value);
+            printNode(node.rightChild);
+            printNode(node.leftChild);
+        }
+
+        function buildingTheTree(leaves) {
+            function Tree(value, leftChild, rightChild) {
+                this.value = value;
+                this.leftChild = leftChild;
+                this.rightChild = rightChild;
+            }
+
+            const tree = new Tree(Array.isArray(leaves) ? 10 : leaves, null, null);
+            
+            if(Array.isArray(leaves))
+                leaves?.forEach(leaf => {
+                    tree.leftChild = buildingTheTree(leaf);
+                    tree.rightChild = buildingTheTree(leaf);
+                }); 
+            
+            return tree;
+        }
+
+        const leaves = [1, 3, 4, 6];
+
+        const root = buildingTheTree(leaves);
+        printNode(root);
+    </script>
+</body>
+</html>

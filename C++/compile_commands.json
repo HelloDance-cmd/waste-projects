@@ -1,0 +1,5 @@
+[{
+		"file":	"D:\\Projects\\C++\\C++\\main.c",
+		"directory":	"D:\\Projects\\C++\\C++",
+		"command":	"clang -c D:\\Projects\\C++\\C++\\main.c -o D:\\Projects\\C++\\C++\\main.c.o  -DNDEBUG -I. -I.  -O2  -Wall"
+	}]

@@ -1,0 +1,10 @@
+{
+    "C_Cpp.default.compilerPath": "c:\\Program Files (x86)\\CodeBlocks\\MinGW\\bin\\g++.exe",
+    // "workbench.colorCustomizations": {
+    //     "editor.lineHighlightBackground": "#2384c023",
+    //     "editor.lineHighlightBorder": "#ffffff30"
+    // },
+    "editor.bracketPairColorization.enabled": false,
+    "editor.renderLineHighlight": "all",
+    "editor.unicodeHighlight.invisibleCharacters": true,
+}

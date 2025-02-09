@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Direction Aware.CSS">
+</head>
+<body>
+    <p class="text">DIRECTION AWARE</p>
+
+    <script>
+        const Pragraph = document.querySelector('p');
+        Pragraph.innerHTML = Array.from(Pragraph.innerText).map(char => `<span>${char}</span>`).join('')
+        const letters = Pragraph.querySelectorAll("span");
+        letters.forEach((letter, idx) => {
+           letter.addEventListener("mouseover", function() {
+                console.log(idx);
+                letters.forEach((restoreLetter, restoreLetterIdx) => {
+                    console.log(restoreLetter);
+                    const distance = Math.abs(idx - restoreLetterIdx);
+                    restoreLetter.style.transitionDelay =  (distance * 0.1).toFixed(1) + "s";
+                });
+           });
+        });
+    </script>
+</body>
+</html>
